@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Edit Mood</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+</head>
+
+<body class="bg-dark text-light">
+
+    <%- include('partials/navbar') %>
+
+    <div class="container mt-5">
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-6">
+
+                <div class="card bg-black border border-danger text-light shadow-lg">
+
+                    <div class="card-body">
+
+                        <h2 class="text-center text-danger mb-4">
+                            Update Mood
+                        </h2>
+
+                        <!-- update form -->
+                        <form action="/editMood/<%= mood.id %>" method="POST">
+
+                            <!-- Date -->
+                            <div class="mb-3">
+
+                                <label for="date" class="form-label">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    class="form-control bg-dark text-light border-danger"
+                                    id="date"
+                                    value="<%= mood.date %>"
+                                    name="date"
+                                    required
+                                >
+
+                            </div>
+
+                            <!-- Mood -->
+                            <div class="mb-3">
+
+                                <label for="mood" class="form-label">
+                                    Mood
+                                </label>
+
+                                <select
+                                    class="form-select bg-dark text-light border-danger"
+                                    id="mood"
+                                    name="mood"
+                                >
+
+                                    <option
+                                        value="Happy"
+                                        <% if (mood.mood === 'Happy') { %>
+                                            selected
+                                        <% } %>
+                                        >
+                                        Happy
+                                    </option>
+
+                                    <option
+                                        value="Sad"
+                                        <%  if (mood.mood === 'Sad') { %>
+                                            selected
+                                        <% } %>
+                                        >
+                                        Sad
+                                    </option>
+
+                                    <option
+                                        value="Angry"
+                                        <% if (mood.mood === 'Angry') { %>
+                                            selected
+                                        <% } %>
+                                        >
+                                        Angry
+                                    </option>
+
+                                    <option
+                                        value="Tired"
+                                        <% if (mood.mood === 'Tired') { %>
+                                            selected
+                                        <% } %>
+                                        >
+                                        Tired
+                                    </option>
+
+                                    <option
+                                        value="Relaxed"
+                                        <% if (mood.mood === 'Relaxed') { %>
+                                            selected
+                                        <% } %>
+                                        >
+
+                                        Relaxed
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <!-- Energy -->
+                            <div class="mb-3">
+
+                                <label for="energy" class="form-label">
+                                    Energy Level
+                                </label>
+
+                                <input
+                                    type="number"
+                                    class="form-control bg-dark text-light border-danger"
+                                    id="energy"
+                                    value="<%= mood.energy %>"
+                                    min="1"
+                                    max="10"
+                                    name="energy"
+                                    required
+                                >
+
+                            </div>
+
+                            <!-- Comment -->
+                            <div class="mb-3">
+
+                                <label for="comment" class="form-label">
+                                    Comment
+                                </label>
+
+                                <textarea
+                                    class="form-control bg-dark text-light border-danger"
+                                    id="comment"
+                                    rows="4"
+                                    name="comment"
+                                ><%= mood.comment %></textarea>
+
+                            </div>
+
+                            <button
+                                type="submit"
+                                class="btn btn-danger w-100"
+                            >
+                                Update Mood
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
